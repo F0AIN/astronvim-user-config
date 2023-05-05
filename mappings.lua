@@ -16,5 +16,18 @@ return {
     ["sl"] = { "<C-w>l" },
     -- terminal
     ["<leader>t"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+    -- telekasten
+    ["<leader>z"] = { "<cmd>Telekasten panel<cr>" },
+    ["<leader>zf"] = { "<cmd>Telekasten find_notes<CR>" },
+    ["<leader>zg"] = { "<cmd>Telekasten search_notes<CR>" },
+    ["<leader>zd"] = { "<cmd>Telekasten goto_today<CR>" },
+    ["<leader>zz"] = { "<cmd>Telekasten follow_link<CR>" },
+    ["<leader>zn"] = { "<cmd>Telekasten new_note<CR>" },
+    ["<leader>zc"] = { "<cmd>Telekasten show_calendar<CR>" },
+    ["<leader>zb"] = { "<cmd>Telekasten show_backlinks<CR>" },
+    ["<leader>zI"] = { "<cmd>Telekasten insert_img_link<CR>" },
+  },
+  i = {
+    ["[["] = { "<cmd>Telekasten insert_link<CR>" },
   }
 }
