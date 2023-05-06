@@ -24,8 +24,9 @@ return {
     ["<leader>zz"] = { "<cmd>Telekasten follow_link<CR>" },
     ["<leader>zn"] = { "<cmd>Telekasten new_note<CR>" },
     ["<leader>zc"] = { "<cmd>Telekasten show_calendar<CR>" },
-    ["<leader>zb"] = { "<cmd>Telekasten show_backlinks<CR>" },
+    ["<leader>zB"] = { "<cmd>Telekasten show_backlinks<CR>" },
     ["<leader>zI"] = { "<cmd>Telekasten insert_img_link<CR>" },
+    ["<leader>zb"] = { "<cmd>Telescope bibtex<CR>" },
   },
   i = {
     ["[["] = { "<cmd>Telekasten insert_link<CR>" },

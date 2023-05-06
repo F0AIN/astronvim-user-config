@@ -1,6 +1,13 @@
 -- 追加したいプラグインはここに書く
 return {
-  { "dracula/vim" },
+  { "Mofiqul/dracula.nvim" },
+  {
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      require("catppuccin").setup {}
+    end,
+  },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -16,7 +23,7 @@ return {
         { name = "luasnip",  priority = 750 },
         { name = "buffer",   priority = 500 },
         { name = "path",     priority = 250 },
-        { name = "emoji",    priority = 700 },   -- add new source
+        { name = "emoji",    priority = 700 }, -- add new source
       }
 
       -- return the new table to be used
@@ -25,34 +32,28 @@ return {
   },
 
   {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { -- add a new dependency to telescope that is our new plugin
-      "nvim-telescope/telescope-media-files.nvim",
-    },
-    -- the first parameter is the plugin specification
-    -- the second is the table of options as set up in Lazy with the `opts` key
-    config = function(plugin, opts)
-      -- run the core AstroNvim configuration function with the options table
-      require("plugins.configs.telescope")(plugin, opts)
-
-      -- require telescope and load extensions as necessary
-      local telescope = require "telescope"
-      telescope.load_extension "media_files"
-    end,
-  },
-  {
     'renerocksai/telekasten.nvim',
     dependencies = {
       'nvim-telescope/telescope.nvim',
       'renerocksai/calendar-vim',
       'nvim-telescope/telescope-symbols.nvim',
       'nvim-telescope/telescope-bibtex.nvim',
+      "nvim-telescope/telescope-media-files.nvim",
     },
     event = "User AstroFile",
-    config = function()
+    config = function(plugin, opts)
+      require("plugins.configs.telescope")(plugin, opts)
       require("telekasten").setup({
         home = vim.fn.expand("~/Documents/note/"),
       })
+      require("telescope").load_extension("media_files")
+      require("telescope").setup {
+        extensions = {
+          bibtex = {
+            citation_format = '[[^@{{label}}]]: {{author}} [{{title}}]({{howpublished}})'
+          }
+        }
+      }
       require("telescope").load_extension("bibtex")
     end
   },
